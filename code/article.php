@@ -13,7 +13,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<title>Home</title>
+<title><?php echo $row['title'] ?></title>
 	<?php include("templates/header.php"); ?>
 
 
