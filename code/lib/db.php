@@ -36,7 +36,7 @@ function get_article_list($dbconn){
 		INNER JOIN
 		authors ON articles.author=authors.id
 		ORDER BY
-		date";
+		date DESC";
 return run_query($dbconn, $query);
 }
 
@@ -59,6 +59,34 @@ function get_article($dbconn, $aid) {
 return run_query($dbconn, $query);
 }
 
+function delete_article($dbconn, $aid) {
+	$query= "DELETE FROM articles WHERE aid='".$aid."'";
+	return run_query($dbconn, $query);
+}
+
+function add_article($dbconn, $title, $content, $author) {
+	$stub = substr($content, 0, 30);
+	$aid = str_replace(" ", "-", strtolower($title));
+	$query="
+		INSERT INTO
+		articles
+		(aid, title, author, stub, content) 
+		VALUES
+		('$aid', '$title', $author, '$stub', '$content')";
+	return run_query($dbconn, $query);
+}
+
+function update_article($dbconn, $title, $content, $aid) {
+	$query=
+		"UPDATE articles
+		SET 
+		title='$title',
+		content='$content'
+		WHERE
+		aid='$aid'";
+	return run_query($dbconn, $query);
+}
+
 function authenticate_user($dbconn, $username, $password) {
 	$query=
 		"SELECT
@@ -73,11 +101,6 @@ function authenticate_user($dbconn, $username, $password) {
 		AND
 		password='".$_POST['password']."'
 		LIMIT 1";
-	$result = run_query($dbconn, $query);
-	if (pg_num_rows($result) == 1) {
-		return True;
-	} else {
-		return False;
-	}
+	return run_query($dbconn, $query);
 }	
 ?>
