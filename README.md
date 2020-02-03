@@ -7,6 +7,8 @@ For this assignment you will work alone or with a classmate to identify and expl
 
 The web application’s technology stack is PHP, Nginx and PostgreSQL. The application is provided via Github and can be built/launched with <code>docker-compose build && docker-compose up</code>. For convenience, there is also a container provided for exploring the database. It can be accessed by navigating to the application in a web browser on port 8080. Use the credentials for the <code>postgres</code> user found in <code>config.php</code> to login to the database from the web interface.
 
+If you want to add more initial data, you can add insert statements to the <code>data.sql</code> script. The database schema will be created and populated from the script when you first build the application. To completely reset the database you will need to remove the docker container that holds the data volume for the database.
+
 ## Vulnerabilities
 
 The application has the following known vulnerabilities that you must find and exploit.
