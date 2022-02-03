@@ -1,4 +1,4 @@
-# PROG38263 - Assignment 3 - 4
+# PROG38263 - Assignment 3
 ## Fixing and Insecure PHP Blog Application
 
 ## Description
